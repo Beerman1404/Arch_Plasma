@@ -48,7 +48,7 @@ def main():
     subprocess.run(["killall", "plasmashell"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.Popen(["plasmashell", "--replace"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
-    print(f"\n> Копирование {filename} в /etc/default/")
+    print("\n> Копирование grub.cfg в /etc/default/")
     try:
         run_command(['cp', 'config/grub.cfg', '/etc/default/'], use_sudo=True)
         print("✅ Файл скопирован успешно")
