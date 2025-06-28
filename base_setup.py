@@ -27,11 +27,11 @@ def main():
     run_command(['pacman', '-S', '--noconfirm'] + packages, use_sudo=True)
 
     #Загрузка модуля ядра
-    run_command(['modprobe', 'snd_sof_amd_renoir'])
+    run_command(['modprobe', 'snd_sof_amd_renoir'], use_sudo=True)
     
     # Запуск аудиослужб в пользовательской сессии
     services = ['pipewire', 'pipewire-pulse', 'wireplumber']
-    run_command(['systemctl', '--user', 'enable', '--now'] + services)
+    run_command(['systemctl', '--user', 'enable', '--now'] + services, use_sudo=True)
 
     #Настройка кнопок регултровки громкости
     for path in glob.glob(os.path.expanduser("~/.cache/plasma*")):
@@ -48,7 +48,12 @@ def main():
     subprocess.run(["killall", "plasmashell"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.Popen(["plasmashell", "--replace"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
-
+    print(f"\n> Копирование {filename} в /etc/default/")
+    try:
+        run_command(['cp', '.config/grub.cfg', '/etc/default/'], use_sudo=True)
+        print("✅ Файл скопирован успешно")
+    except Exception as e:
+        print(f"❌ Ошибка при копировании: {e}")
 
 if __name__ == '__main__':
     main()
