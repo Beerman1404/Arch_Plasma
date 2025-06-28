@@ -31,7 +31,7 @@ def main():
     
     # Запуск аудиослужб в пользовательской сессии
     services = ['pipewire', 'pipewire-pulse', 'wireplumber']
-    run_command(['systemctl', '--user', 'enable', '--now'] + services, use_sudo=True)
+    run_command(['systemctl', '--user', 'enable', '--now'] + services)
 
     #Настройка кнопок регултровки громкости
     for path in glob.glob(os.path.expanduser("~/.cache/plasma*")):
