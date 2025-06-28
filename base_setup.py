@@ -50,7 +50,7 @@ def main():
 
     print(f"\n> Копирование {filename} в /etc/default/")
     try:
-        run_command(['cp', '.config/grub.cfg', '/etc/default/'], use_sudo=True)
+        run_command(['cp', 'config/grub.cfg', '/etc/default/'], use_sudo=True)
         print("✅ Файл скопирован успешно")
     except Exception as e:
         print(f"❌ Ошибка при копировании: {e}")
