@@ -26,6 +26,9 @@ def main():
     ]
     run_command(['pacman', '-S', '--noconfirm'] + packages, use_sudo=True)
 
+    #Загрузка модуля ядра
+    run_command(['modprobe', 'snd_sof_amd_renoir'])
+    
     # Запуск аудиослужб в пользовательской сессии
     services = ['pipewire', 'pipewire-pulse', 'wireplumber']
     run_command(['systemctl', '--user', 'enable', '--now'] + services)
