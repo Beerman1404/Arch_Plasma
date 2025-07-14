@@ -1,0 +1,30 @@
+add_newline = false
+
+format = """
+(fg:#5acce8)$username$directory$git_branch$git_status"""
+
+[line_break]
+disabled = false
+
+[[battery.display]]
+threshold = 100
+
+[git_branch]
+format = "[$symbol$branch](bg:#252525)[ ](fg:#252525)"
+symbol = " "
+
+[directory]
+format = "[$path]($style)[$read_only](fg:#fff bg:#6f6565)[ ](fg:#6f6565)"
+style = "fg:#fff1cf bg:#6f6565"
+truncation_symbol = "…/"
+truncate_to_repo = true
+truncation_length = 100
+home_symbol = "~"
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]](fg:#fff1cf bg:#6f6565)[ ](fg:#fff1cf bg:#6f6565))'
+
+[username]
+format = "[ $user](fg:#2e2e2e bg:#9cc6e6 bold)[ ](fg:#9cc6e6 bg:#6f6565)"
+show_always = true
+disabled = false
